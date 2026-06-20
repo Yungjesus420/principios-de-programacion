@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calificacciones</title>
+</head>
+<body>
+    <h1>calificacciones</h1>
+    <p>calculador de calificacciones</p>
+    <div>
+        <label for="calificacion1">calificacion 1:</label>
+        <input type="number" id="calificacion1" name="calificacion1">
+    </div>
+    <div>
+        <label for="calificacion2">calificacion 2:</label>
+        <input type="number" id="calificacion2" name="calificacion2">
+    </div>
+    <div>
+        <label for="calificacion3">calificacion 3:</label>
+        <input type="number" id="calificacion3" name="calificacion3">
+    </div>
+    <div>
+        <label for="calificacion4">calificacion 4:</label>
+        <input type="number" id="calificacion4" name="calificacion4">
+    </div>
+    <div>
+        <label for="calificacion5">calificacion 5:</label>
+        <input type="number" id="calificacion5" name="calificacion5">
+    </div>
+    <div>
+        <label for="calificacion6">calificacion 6:</label>
+        <input type="number" id="calificacion6" name="calificacion6">
+    </div>
+    <div>
+        <label for="calificacion7">calificacion 7:</label>
+        <input type="number" id="calificacion7" name="calificacion7">
+    </div>
+    <div>
+        <label for="calificacion8">calificacion 8:</label>
+        <input type="number" id="calificacion8" name="calificacion8">
+    </div>
+    <div>
+        <label for="calificacion9">calificacion 9:</label>
+        <input type="number" id="calificacion9" name="calificacion9">
+    </div>
+    <div>
+        <label for="calificacion10">calificacion 10:</label>
+        <input type="number" id="calificacion10" name="calificacion10">
+    </div>
+    <div>
+        <label for="calificacion11">calificacion 11:</label>
+        <input type="number" id="calificacion11" name="calificacion11">
+    </div>
+    <div>
+        <label for="calificacion12">calificacion 12:</label>
+        <input type="number" id="calificacion12" name="calificacion12">
+    </div>
+    
+    <button type="button" onclick="calcularPromedio()">Calcular</button>
+    <button type="button" onclick="borrar()">Borrar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularPromedio() {
+            const calificaciones = [];
+            for (let i = 1; i <= 12; i++) {
+                const val = parseFloat(document.getElementById('calificacion' + i).value);
+                if (!isNaN(val)) {
+                    calificaciones.push(val);
+                }
+            }
+            if (calificaciones.length === 0) {
+                document.getElementById('resultado').textContent = 'Ingresa al menos una calificacion valida.';
+                return;
+            }
+            const suma = calificaciones.reduce(function(a, b) { return a + b; }, 0);
+            const promedio = suma / calificaciones.length;
+            var estado = promedio >= 60 ? 'Aprobado' : 'Reprobado';
+            document.getElementById('resultado').textContent = 'Promedio: ' + promedio.toFixed(2) + ' - ' + estado;
+        }
+
+        function borrar() {
+            for (let i = 1; i <= 12; i++) {
+                document.getElementById('calificacion' + i).value = '';
+            }
+            document.getElementById('resultado').textContent = '';
+        }
+    </script>
+</body>
+</html>
